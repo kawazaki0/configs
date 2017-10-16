@@ -107,3 +107,9 @@ function dolog() {
  docker exec -it "$1" bash
 }
 
+backward-kill-to-space () {
+  local  WORDCHARS='*?_-.[]~=&;!#$%^(){}<>\/'
+  zle backward-kill-word
+}
+zle -N backward-kill-to-space
+bindkey '^W' backward-kill-to-space
