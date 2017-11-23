@@ -54,6 +54,7 @@ ZSH_THEME="clean"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 plugins+=(safe_paste)
+plugins+=(k)
 
 source $ZSH/oh-my-zsh.sh
 
