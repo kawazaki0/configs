@@ -52,11 +52,13 @@ ZSH_THEME="clean"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+source ~/.zsh/.git-prompt.sh
 plugins=(git)
 plugins+=(safe_paste)
 plugins+=(k)
 
 source $ZSH/oh-my-zsh.sh
+PS1='%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%}%{$fg[yellow]%}$(__git_ps1)%{$reset_color%} %(!.#.$) '
 
 # User configuration
 
