@@ -55,6 +55,7 @@ ZSH_THEME="clean"
 source ~/.zsh/.git-prompt.sh
 plugins=(git)
 plugins+=(safe_paste)
+# git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 plugins+=(k)
 
 source $ZSH/oh-my-zsh.sh
