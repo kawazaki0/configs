@@ -54,7 +54,7 @@ ZSH_THEME="clean"
 # Add wisely, as too many plugins slow down shell startup.
 source ~/.zsh/.git-prompt.sh
 plugins=(git)
-plugins+=(safe_paste)
+plugins+=(safe-paste)
 # git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 plugins+=(k)
 
