@@ -53,8 +53,10 @@ ZSH_THEME="clean"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 source ~/.zsh/.git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=True
 plugins=(git)
 plugins+=(safe-paste)
+plugins+=(safe_paste)
 # git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 plugins+=(k)
 
