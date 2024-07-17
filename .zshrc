@@ -119,3 +119,10 @@ backward-kill-to-space () {
 }
 zle -N backward-kill-to-space
 bindkey '^W' backward-kill-to-space
+
+function integrity() {
+  # usage integrity https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css
+  # output sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N
+  echo -n "sha384-";
+  curl "$1" -s |  openssl dgst -binary -sha384 | openssl base64 -A
+}
