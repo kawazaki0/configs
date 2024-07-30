@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Advanced CSV",
+		"Clang Format",
+		"Dockerfile Syntax Highlighting",
+		"Git",
+		"Indent XML",
+		"IndentX",
+		"Package Control",
+	],
+}
