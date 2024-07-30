@@ -13,5 +13,8 @@
 	"save_on_focus_lost": true,
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
+	"default_line_ending": "unix",
+	"minimap_horizontal_scrolling": true,
+	"index_files": true,
 }
