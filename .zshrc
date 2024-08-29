@@ -2,13 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/maciej/.oh-my-zsh
+export ZSH=/home/maciej/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="clean"
-#ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,10 +54,10 @@ ZSH_THEME="clean"
 source ~/.zsh/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=True
 plugins=(git)
-plugins+=(safe-paste)
-plugins+=(safe_paste)
+#plugins+=(safe-paste)
+#plugins+=(safe_paste)
 # git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
-plugins+=(k)
+#plugins+=(k)
 
 source $ZSH/oh-my-zsh.sh
 PS1='%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%}%{$fg[yellow]%}$(__git_ps1)%{$reset_color%} %(!.#.$) '
@@ -95,23 +94,20 @@ PS1='%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%}
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-alias g='gnome-open'
+#alias g='gnome-open'
 
-function dolog() {
-
- if [ $# -ne 1 ]; then
-   echo 'Illegal number of arguments'
-   return 1
- fi
-
- docker ps --format "{{.Names}}" | egrep "^$1$" > /dev/null
- if [ $? -ne 0 ]; then
-   echo "Container '$1' does not exist"
-   return 1
- fi
-
- docker exec -it "$1" bash
-}
+#function dolog() {
+# if [ $# -ne 1 ]; then
+#   echo 'Illegal number of arguments'
+#   return 1
+# fi
+# docker ps --format "{{.Names}}" | egrep "^$1$" > /dev/null
+# if [ $? -ne 0 ]; then
+#   echo "Container '$1' does not exist"
+#   return 1
+# fi
+# docker exec -it "$1" bash
+#}
 
 backward-kill-to-space () {
   local  WORDCHARS='*?_-.[]~=&;!#$%^(){}<>\/'
@@ -120,9 +116,9 @@ backward-kill-to-space () {
 zle -N backward-kill-to-space
 bindkey '^W' backward-kill-to-space
 
-function integrity() {
+#function integrity() {
   # usage integrity https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css
   # output sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N
-  echo -n "sha384-";
-  curl "$1" -s |  openssl dgst -binary -sha384 | openssl base64 -A
-}
+#  echo -n "sha384-";
+#  curl "$1" -s |  openssl dgst -binary -sha384 | openssl base64 -A
+#}
