@@ -1,0 +1,43 @@
+- hosts: localhost
+  connection: localhost
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: install some packages on debian system
+      apt:
+        name: ['python3-dev']
+        state: present
+        install_recommends: no
+- hosts: localhost
+  vars:
+    - zsh_dependencies: []
+  tasks:
+    - name: Ensure Zsh with dependencies are installed
+      apt:
+        name: "{{ ['zsh'] + zsh_dependencies }}"
+        state: present
+        update_cache: yes
+      become: true
+    - name: Ensure zsh is the default shell
+      user:
+        name: "m"
+        shell: "/usr/bin/zsh"
+      become: true
+    - name: Download Oh My Zsh installation script
+      get_url:
+        url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+        dest: /tmp/install_ohmyzsh.sh
+    - name: Run Oh My Zsh installation script
+      command: sh /tmp/install_ohmyzsh.sh --unattended
+      register: ohmyzsh_result
+      failed_when: "'FAILED' in ohmyzsh_result.stderr"
+    - name: Paste my zsh config
+      get_url:
+        url: https://raw.githubusercontent.com/kawazaki0/configs/refs/heads/master/.zshrc
+        dest: ~/.zshrc
+    - name: Ensure dir is created
+      command: mkdir -p ~/.zsh/
+    - name: Paste my zsh config git-prompt
+      get_url:
+        url: https://raw.githubusercontent.com/kawazaki0/configs/refs/heads/master/%7E/.zsh/.git-prompt.sh
+        dest: ~/.zsh/.git-prompt.sh
