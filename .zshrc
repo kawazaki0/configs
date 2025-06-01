@@ -122,3 +122,22 @@ bindkey '^W' backward-kill-to-space
 #  echo -n "sha384-";
 #  curl "$1" -s |  openssl dgst -binary -sha384 | openssl base64 -A
 #}
+
+#function budzik {
+#    WAKEUP_TIME=$1
+#    echo 'amixer -D pulse set Master 10%' | at $WAKEUP_TIME
+#    echo 'amixer -D pulse set Master 20%' | at $WAKEUP_TIME + 3 min
+#    echo 'amixer -D pulse set Master 30%' | at $WAKEUP_TIME + 6 min
+#    echo 'amixer -D pulse set Master 40%' | at $WAKEUP_TIME + 9 min
+#    echo 'amixer -D pulse set Master 50%' | at $WAKEUP_TIME + 12 min
+#}
+function budzik {
+    WAKEUP_TIME=$1
+    CURRENT_VOLUME=$(amixer -D pulse get Master  | awk -F'[][]' '/Left:/ { gsub(/%/, "", $2); print $2 }')
+    echo "for i in \$(seq $CURRENT_VOLUME 10); do amixer -D pulse set Master \$i%; sleep 1; done" | at $WAKEUP_TIME
+    echo 'for i in $(seq 10 20); do amixer -D pulse set Master $i%; sleep 1; done' | at $WAKEUP_TIME + 3 min
+    echo 'for i in $(seq 20 30); do amixer -D pulse set Master $i%; sleep 1; done' | at $WAKEUP_TIME + 6 min
+    echo 'for i in $(seq 30 40); do amixer -D pulse set Master $i%; sleep 1; done' | at $WAKEUP_TIME + 9 min
+    echo 'for i in $(seq 40 50); do amixer -D pulse set Master $i%; sleep 1; done' | at $WAKEUP_TIME + 12 min
+    # for i in $(seq 10 20); do amixer -D pulse set Master $i%; sleep 1; done
+}
